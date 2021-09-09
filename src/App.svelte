@@ -1,8 +1,8 @@
 <script>
+  import { clips } from './stores';
   import Form from './components/Form.svelte';
   import Header from './components/Header.svelte';
   import Results from './components/Results.svelte';
-  import { clips } from './components/Form.svelte';
 </script>
 
 <div class="container">

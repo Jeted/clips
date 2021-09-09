@@ -4,10 +4,7 @@
   import { get, writable, Writable } from 'svelte/store';
   import { getClips, getUser, IClip } from 'src/requests';
   import Input from './Form/Input.svelte';
-
-  const loading: Writable<boolean> = writable(false);
-  const params: Writable<IParams> = writable(null);
-  export const clips: Writable<IClip[]> = writable([]);
+  import { loading, params, clips } from '../stores';
 
   const { OAUTH } = useToken();
 

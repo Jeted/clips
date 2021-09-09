@@ -1,7 +1,7 @@
 <script lang="ts">
   import moment from 'moment';
 
-  import { clips } from './Form.svelte';
+  import { clips } from '../stores';
   import Column from './Results/Column.svelte';
   import Thumbnail from './Results/Thumbnail.svelte';
   import VirtualList from './VirtualList.svelte';
