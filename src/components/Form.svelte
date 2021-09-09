@@ -98,8 +98,8 @@
       width: 100%;
 
       input[type='submit'] {
-        width: 90px;
         cursor: pointer;
+        width: 90px;
       }
 
       :global(input) {

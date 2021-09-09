@@ -32,10 +32,10 @@
 
 <style lang="scss">
   .thumbnail {
-    width: 176px;
     height: 100px;
     margin: auto 0;
     position: relative;
+    width: 176px;
 
     img {
       border-radius: 4px;
@@ -49,16 +49,16 @@
       left: 0;
       right: 0;
       bottom: 0;
-      display: flex;
       background-color: rgba(0, 0, 0, 0.65);
       border-radius: 4px;
+      display: flex;
       justify-content: center;
       transition: opacity 100ms ease;
       opacity: 0;
 
       .buttons {
-        display: flex;
         align-items: center;
+        display: flex;
 
         a {
           border-radius: 50%;

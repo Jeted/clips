@@ -10,15 +10,15 @@
 
 <style lang="scss">
   .column {
-    word-break: break-word;
-    padding: 8px;
-    margin: auto 0px;
     line-height: 18px;
+    margin: auto 0px;
+    padding: 8px;
+    word-break: break-word;
   }
 
   .date {
-    text-align: center;
     font-family: Consolas;
     font-size: 14px;
+    text-align: center;
   }
 </style>
