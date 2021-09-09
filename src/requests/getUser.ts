@@ -7,7 +7,7 @@ interface IUser {
   avatar: string;
 }
 
-export async function getUser(channel: string, isLogin: boolean): Promise<IUser> {
+export async function getUser(channel: string, isLogin: boolean): Promise<IUser | false> {
   const client_id = localStorage.getItem('tcf:client_id');
   const oauth = localStorage.getItem('tcf:oauth');
 
@@ -21,6 +21,7 @@ export async function getUser(channel: string, isLogin: boolean): Promise<IUser>
     },
   }).then((result) => {
     const user = result.data.data[0];
+    if (!user) return false;
     return {
       userId: user.id,
       login: user.login,
