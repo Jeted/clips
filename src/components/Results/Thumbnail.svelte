@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { IClip } from 'src/requests';
+  import { IClip } from '../../interfaces';
   export let clip: IClip;
   let hover: boolean = false;
 

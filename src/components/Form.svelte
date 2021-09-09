@@ -1,26 +1,13 @@
 <script context="module" lang="ts">
   import moment from 'moment';
-  import { useToken } from '../hooks';
-  import { get, writable, Writable } from 'svelte/store';
-  import { getClips, getUser, IClip } from 'src/requests';
   import Input from './Form/Input.svelte';
+  import { get } from 'svelte/store';
+  import { useToken } from '../hooks';
+  import { IForm } from '../interfaces';
+  import { getClips, getUser } from 'src/requests';
   import { loading, params, clips } from '../stores';
 
   const { OAUTH } = useToken();
-
-  export interface IForm {
-    from_date: string;
-    to_date: string;
-    channel: string;
-  }
-
-  export interface IParams {
-    broadcaster_id: string;
-    first: number;
-    started_at: string;
-    ended_at: string;
-    after?: string;
-  }
 
   let form: IForm = {
     from_date: '26/05/2016',

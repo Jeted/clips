@@ -1,11 +1,5 @@
 import axios from 'axios';
-
-interface IUser {
-  userId: string;
-  login: string;
-  displayName: string;
-  avatar: string;
-}
+import { IUser } from '../interfaces';
 
 export async function getUser(channel: string, isLogin: boolean): Promise<IUser | false> {
   const client_id = localStorage.getItem('tcf:client_id');

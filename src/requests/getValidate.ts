@@ -1,9 +1,5 @@
 import axios from 'axios';
-
-interface IValidate {
-  clientId: string;
-  userId: string;
-}
+import { IValidate } from '../interfaces';
 
 export async function getValidate(): Promise<IValidate> {
   const oauth = localStorage.getItem('tcf:oauth');
