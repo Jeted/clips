@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { get } from 'svelte/store';
   import { useToken } from '../hooks/useToken';
   import { getUser } from '../requests/getUser';
   import { getValidate } from '../requests/getValidate';
@@ -13,8 +12,8 @@
   if ($OAUTH) {
     getValidate().then(async (channel) => {
       localStorage.setItem('tcf:client_id', channel.clientId);
-      getUser(channel.userId, false).then(({ displayName }) => {
-        USERNAME.set(displayName);
+      getUser(channel.userId, false).then((user) => {
+        if (user) USERNAME.set(user.displayName);
       });
     });
   }
