@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ICategory, IClip } from '../interfaces';
+import { ICategory, IClip } from '../misc/interfaces';
 
 export async function getCategories(clips: IClip[]): Promise<ICategory[] | null> {
   if (!clips.length) return null;

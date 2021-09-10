@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { getCategories } from './getCategories';
-import { IClip, IClipData } from '../interfaces';
+import { IClip, IClipData } from '../misc/interfaces';
 
 export async function getClips(url: URL): Promise<[IClip[], string]> {
   const client_id = localStorage.getItem('tcf:client_id');

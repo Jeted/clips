@@ -3,11 +3,11 @@
   import Input from './Form/Input.svelte';
   import { get } from 'svelte/store';
   import { useToken } from '../hooks';
-  import { IForm } from '../interfaces';
   import { getClips, getUser } from 'src/requests';
-  import { loading, params, clips } from '../stores';
 
   const { OAUTH } = useToken();
+  import { IForm } from '../misc/interfaces';
+  import { loading, params, clips } from '../misc/store';
 
   let form: IForm = {
     from_date: '26/05/2016',

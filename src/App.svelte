@@ -1,5 +1,5 @@
 <script>
-  import { clips } from './stores';
+  import { clips } from './misc/store';
   import Form from './components/Form.svelte';
   import Header from './components/Header.svelte';
   import Results from './components/Results.svelte';

@@ -41,6 +41,12 @@ export interface IParams {
   after?: string;
 }
 
+export interface IStore {
+  clips: IClip[];
+  loading: boolean;
+  params: IParams;
+}
+
 export interface IToken {
   LOGIN_URL: string;
   USERNAME: Writable<string>;

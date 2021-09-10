@@ -1,6 +1,6 @@
 import config from '../config';
 import { get } from 'svelte/store';
-import { IToken } from '../interfaces';
+import { IToken } from '../misc/interfaces';
 import { useLocalStorage } from './useLocalStorage';
 
 export function useToken(): IToken {

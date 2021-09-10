@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { IUser } from '../interfaces';
+import { IUser } from '../misc/interfaces';
 
 export async function getUser(channel: string, isLogin: boolean): Promise<IUser | false> {
   const client_id = localStorage.getItem('tcf:client_id');
