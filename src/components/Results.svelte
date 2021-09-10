@@ -2,11 +2,13 @@
   import moment from 'moment';
   import { clips } from '../misc/store';
   import Column from './Results/Column.svelte';
+  import Filters from './Results/Filters.svelte';
   import Thumbnail from './Results/Thumbnail.svelte';
   import VirtualList from './VirtualList.svelte';
 </script>
 
 <div class="clips">
+  <Filters />
   <VirtualList itemHeight={116} items={$clips} let:clip>
     <Thumbnail {clip} />
     <Column width="290" column="title" value={clip.title} />
@@ -26,7 +28,7 @@
     color: white;
     font-size: 14px;
     margin-bottom: 10px;
-    padding: 4px 8px 8px 8px;
+    padding: 0 8px 8px 8px;
   }
 
   :global(.viewport) {

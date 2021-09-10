@@ -1,7 +1,7 @@
 <script lang="ts">
-  export let width: string;
-  export let value: string;
   export let column: string;
+  export let value: string;
+  export let width: string;
 </script>
 
 <div class="column {column}" style="width: {width}px;" title={value}>

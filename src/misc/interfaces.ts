@@ -41,9 +41,15 @@ export interface IParams {
   after?: string;
 }
 
+export interface ISorting {
+  field: string;
+  order: boolean;
+}
+
 export interface IStore {
   clips: IClip[];
   loading: boolean;
+  sorting: ISorting;
   params: IParams;
 }
 

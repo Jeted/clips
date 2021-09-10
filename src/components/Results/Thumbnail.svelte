@@ -1,11 +1,10 @@
 <script lang="ts">
-  import { IClip } from '../../interfaces';
-  export let clip: IClip;
-  let hover: boolean = false;
+  import { IClip } from '../../misc/interfaces';
 
-  function handleHover() {
-    hover = !hover;
-  }
+  let hover: boolean = false;
+  const handleHover = () => (hover = !hover);
+
+  export let clip: IClip;
 </script>
 
 <div class="thumbnail">
