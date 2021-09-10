@@ -2,8 +2,9 @@
   import { IClip } from '../../misc/interfaces';
 
   let hover: boolean = false;
+  let loaded: boolean = false;
   const handleHover = () => (hover = !hover);
-
+  const handleLoad = () => (loaded = true);
   export let clip: IClip;
 </script>
 
@@ -26,7 +27,7 @@
       </a>
     </div>
   </div>
-  <img alt="" src={clip.thumbnail} />
+  <img class:loaded alt="" src={clip.thumbnail} on:load={handleLoad} />
 </div>
 
 <style lang="scss">
@@ -34,12 +35,19 @@
     height: 100px;
     margin: auto 0;
     position: relative;
+    user-select: none;
     width: 176px;
 
     img {
       border-radius: 4px;
       height: 100px;
+      opacity: 0;
+      transition: opacity 500ms ease;
       width: 176px;
+    }
+
+    .loaded {
+      opacity: 100;
     }
 
     .layer {
