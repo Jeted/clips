@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { SORT } from '../../misc/enums';
   import Header from './Filters/Header.svelte';
 </script>
 
@@ -6,11 +7,11 @@
   <div class="header" style="width: 178px;">
     <span>Clips (1002)</span>
   </div>
-  <Header width="302px" title="Title" />
-  <Header width="146px" title="Author" />
-  <Header width="144px" title="Category" />
-  <Header width="102px" title="Views" />
-  <Header width="180px" title="Date" />
+  <Header width="302px" title={SORT.TITLE} />
+  <Header width="146px" title={SORT.AUTHOR} />
+  <Header width="144px" title={SORT.CATEGORY} />
+  <Header width="102px" title={SORT.VIEWS} />
+  <Header width="180px" title={SORT.DATE} />
 </header>
 
 <style lang="scss">

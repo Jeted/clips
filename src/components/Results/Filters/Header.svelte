@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { sortClips } from '../../../helpers';
-  import { clips, sorting } from '../../../misc/store';
+  import { SORT } from '../../../misc/enums';
+  import { sorting, handleSorting } from '../../../misc/store';
 
   let hover: boolean, rotate: boolean, active: boolean;
   hover = rotate = active = false;
@@ -9,22 +9,15 @@
   $: rotate = $sorting.order;
 
   const handleHover = () => (hover = !hover);
-  const handleSorting = () => {
-    sorting.set({
-      field: title,
-      order: title === $sorting.field ? !$sorting.order : $sorting.order,
-    });
-    clips.set(sortClips($clips));
-  };
 
-  export let title: string;
+  export let title: SORT;
   export let width: string;
 </script>
 
 <div class="header" style="width: {width};" on:mouseenter={handleHover} on:mouseleave={handleHover}>
   <span>{title}</span>
   <div class="buttons">
-    <div class="sorting" on:click={handleSorting}>
+    <div class="sorting" on:click={() => handleSorting(title)}>
       <svg
         class="arrow"
         class:rotate
