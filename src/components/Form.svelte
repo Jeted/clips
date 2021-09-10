@@ -1,12 +1,10 @@
 <script context="module" lang="ts">
   import moment from 'moment';
   import Input from './Form/Input.svelte';
+  import Button from './Form/Button.svelte';
   import { get } from 'svelte/store';
-  import { useToken } from '../hooks';
-  import { getClips, getUser } from 'src/requests';
-
-  const { OAUTH } = useToken();
   import { IForm } from '../misc/interfaces';
+  import { getClips, getUser } from '../requests';
   import { loading, params, clips } from '../misc/store';
 
   let form: IForm = {
@@ -26,9 +24,13 @@
     };
 
     if (form.channel === '') return;
+    loading.set(true);
 
     getUser(form.channel, true).then((user) => {
-      if (!user) return;
+      if (!user) {
+        loading.set(false);
+        return;
+      }
       params.set({
         broadcaster_id: user.userId,
         first: 100,
@@ -62,7 +64,7 @@
     <Input placeholder="From..." value={form.from_date} />
     <Input placeholder="To..." value={form.to_date} />
     <Input placeholder="Channel" value={form.channel} />
-    <input type="submit" value="Search" disabled={!$OAUTH} />
+    <Button />
   </form>
 </section>
 
@@ -72,6 +74,7 @@
   section {
     background-color: $secondary-color;
     border-radius: 10px;
+    height: 35px;
     margin-bottom: 10px;
     padding: 8px;
 
@@ -81,12 +84,8 @@
       position: relative;
       width: 100%;
 
-      input[type='submit'] {
-        cursor: pointer;
-        width: 90px;
-      }
-
-      :global(input) {
+      :global(input),
+      :global(button) {
         appearance: none;
         background: $base-color;
         border: none;
@@ -96,16 +95,19 @@
         font-size: 14px;
         padding: 5px 15px;
         width: 28%;
+        &::placeholder {
+          color: $text-color;
+        }
+      }
+
+      :global(input) {
+        &:disabled {
+          cursor: not-allowed;
+        }
         &:focus {
           background: #1c1d25;
           box-shadow: 0 0 0 3px #ffffff12;
           outline: none !important;
-        }
-        &::placeholder {
-          color: $text-color;
-        }
-        &:disabled {
-          cursor: not-allowed;
         }
       }
     }

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { useToken } from 'src/hooks';
+  import { useToken } from '../../hooks';
 
   const { OAUTH } = useToken();
 
