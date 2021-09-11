@@ -55,7 +55,6 @@
         transition: transform 200ms ease, opacity 150ms ease;
       }
 
-      .hover,
       .active {
         opacity: 100;
       }
