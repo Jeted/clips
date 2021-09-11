@@ -1,4 +1,4 @@
-<script context="module" lang="ts">
+<script lang="ts">
   import moment from 'moment';
   import Input from './Form/Input.svelte';
   import Button from './Form/Button.svelte';
@@ -14,8 +14,7 @@
     channel: '',
   };
 
-  function handleSubmit(e: any) {
-    e.preventDefault();
+  async function handleSubmit(e: any) {
     clips.set([]);
 
     form = {
@@ -61,7 +60,7 @@
 </script>
 
 <section>
-  <form on:submit={handleSubmit}>
+  <form on:submit|preventDefault={handleSubmit}>
     <Input placeholder="From..." value={form.from_date} />
     <Input placeholder="To..." value={form.to_date} />
     <Input placeholder="Channel" value={form.channel} />

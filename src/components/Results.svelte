@@ -12,7 +12,7 @@
   <VirtualList itemHeight={116} items={$clips} let:clip>
     <Thumbnail {clip} />
     <Column width="290" column="title" value={clip.title} />
-    <Column width="135" column="name" value={clip.displayName} />
+    <Column width="135" column="author" value={clip.displayName} />
     <Column width="130" column="category" value={clip.category} />
     <Column width="80" column="views" value={clip.views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ')} />
     <Column width="165" column="date" value={moment(clip.createdAt).format('YYYY/MM/DD HH:mm:ss')} />

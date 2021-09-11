@@ -8,7 +8,7 @@
   const handleHover = () => (hover = !hover);
 
   $: {
-    if (clip.thumbnail !== previousClip?.thumbnail) loaded = false;
+    if (clip !== previousClip) loaded = false;
     previousClip = clip;
   }
 
