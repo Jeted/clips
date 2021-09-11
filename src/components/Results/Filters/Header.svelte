@@ -38,7 +38,6 @@
 
     span {
       line-height: 36px;
-      margin-right: 4px;
     }
 
     .buttons {
@@ -50,6 +49,7 @@
     .sorting {
       border-radius: 6px;
       cursor: pointer;
+      margin: 4px;
       height: 28px;
       &:hover {
         background-color: #ffffff1c;

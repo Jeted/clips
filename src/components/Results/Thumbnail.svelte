@@ -33,7 +33,7 @@
 <style lang="scss">
   .thumbnail {
     height: 100px;
-    margin: auto 0;
+    margin: auto 0 auto 8px;
     position: relative;
     user-select: none;
     width: 176px;
@@ -42,7 +42,7 @@
       border-radius: 4px;
       height: 100px;
       opacity: 0;
-      transition: opacity 500ms ease;
+      transition: opacity 300ms ease;
       width: 176px;
     }
 

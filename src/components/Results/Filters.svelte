@@ -19,5 +19,9 @@
     display: flex;
     height: 36px;
     justify-content: flex-end;
+
+    .clips {
+      line-height: 36px;
+    }
   }
 </style>

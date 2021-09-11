@@ -27,7 +27,6 @@
     border-radius: 8px 8px 11px 11px;
     color: white;
     font-size: 14px;
-    margin-bottom: 10px;
     padding: 0 8px 8px 8px;
   }
 
@@ -40,7 +39,6 @@
   :global(.row) {
     height: 116px;
     font-size: 13px;
-    padding-left: 8px;
 
     &:hover {
       background-color: #24262f;
