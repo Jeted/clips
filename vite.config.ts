@@ -25,64 +25,61 @@ import legacy from '@vitejs/plugin-legacy';
 import autoprefixer from 'autoprefixer';
 import pkg from './package.json';
 import tsconfig from './tsconfig.json';
+import _config from './src/config';
 
 const production = process.env.NODE_ENV === 'production';
-const config = <UserConfig> defineConfig({
-	plugins: [
-		svelte({
-			emitCss: production,
-			preprocess: sveltePreprocess(),
-			compilerOptions: {
-				dev: !production,
-			},
-
-			// @ts-ignore This is temporary until the type definitions are fixed!
-			hot: !production
-		}),
-	],
-	server: {
-		host: 'localhost',
-		port: 5000
-	},
-	build: {
-		sourcemap: sourceMapsInProduction
-	},
-	css: {
-		postcss: {
-			plugins: [
-				autoprefixer()
-			]
-		}
-	}
+const config = <UserConfig>defineConfig({
+  plugins: [
+    svelte({
+      emitCss: production,
+      preprocess: sveltePreprocess(),
+      compilerOptions: {
+        dev: !production,
+      },
+      hot: !production,
+    }),
+  ],
+  server: {
+    host: 'localhost',
+    port: 5000,
+  },
+  base: '/' + _config.REPO + '/',
+  build: {
+    sourcemap: sourceMapsInProduction,
+  },
+  css: {
+    postcss: {
+      plugins: [autoprefixer()],
+    },
+  },
 });
-
 // Babel
 if (useBabel) {
-	config.plugins.unshift(
-		legacy({
-			targets: pkg.browserslist
-		})
-	);
+  config.plugins.unshift(
+    legacy({
+      targets: pkg.browserslist,
+    }),
+  );
 }
 
 // Load path aliases from the tsconfig.json file
 const aliases = tsconfig.compilerOptions.paths;
 
 for (const alias in aliases) {
-	const paths = aliases[alias].map((p: string) => path.resolve(__dirname, p));
+  const paths = aliases[alias].map((p: string) => path.resolve(__dirname, p));
 
-	// Our tsconfig uses glob path formats, whereas webpack just wants directories
-	// We'll need to transform the glob format into a format acceptable to webpack
+  // Our tsconfig uses glob path formats, whereas webpack just wants directories
+  // We'll need to transform the glob format into a format acceptable to webpack
 
-	const wpAlias = alias.replace(/(\\|\/)\*$/, '');
-	const wpPaths = paths.map((p: string) => p.replace(/(\\|\/)\*$/, ''));
+  const wpAlias = alias.replace(/(\\|\/)\*$/, '');
+  const wpPaths = paths.map((p: string) => p.replace(/(\\|\/)\*$/, ''));
 
-	if (!config.resolve) config.resolve = {};
-	if (!config.resolve.alias) config.resolve.alias = {};
+  if (!config.resolve) config.resolve = {};
+  if (!config.resolve.alias) config.resolve.alias = {};
 
-	if (config.resolve && config.resolve.alias && !(wpAlias in config.resolve.alias)) {
-		config.resolve.alias[wpAlias] = wpPaths.length > 1 ? wpPaths : wpPaths[0];
-	}
+  if (config.resolve && config.resolve.alias && !(wpAlias in config.resolve.alias)) {
+    config.resolve.alias[wpAlias] = wpPaths.length > 1 ? wpPaths : wpPaths[0];
+  }
 }
 
 export default config;
