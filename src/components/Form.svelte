@@ -3,10 +3,10 @@
   import Input from './Form/Input.svelte';
   import Button from './Form/Button.svelte';
   import { get } from 'svelte/store';
+  import { sortClips } from 'src/helpers';
   import { IForm } from '../misc/interfaces';
   import { getClips, getUser } from '../requests';
   import { loading, params, clips } from '../misc/store';
-  import { sortClips } from 'src/helpers';
 
   let form: IForm = {
     from_date: '26/05/2016',
@@ -26,18 +26,16 @@
     if (form.channel === '') return;
     loading.set(true);
 
-    getUser(form.channel, true).then((user) => {
-      if (!user) {
-        loading.set(false);
-        return;
-      }
-      params.set({
-        broadcaster_id: user.userId,
-        first: 100,
-        started_at: moment(form.from_date, 'DD/MM/YYYY').toISOString(),
-        ended_at: moment(form.to_date, 'DD/MM/YYYY').toISOString(),
-      });
-    });
+    getUser(form.channel, true)
+      .then((user) => {
+        params.set({
+          broadcaster_id: user.userId,
+          first: 100,
+          started_at: moment(form.from_date, 'DD/MM/YYYY').toISOString(),
+          ended_at: moment(form.to_date, 'DD/MM/YYYY').toISOString(),
+        });
+      })
+      .catch(() => loading.set(false));
   }
 
   params.subscribe((value) => {
