@@ -6,6 +6,7 @@
   import { IForm } from '../misc/interfaces';
   import { getClips, getUser } from '../requests';
   import { loading, params, clips } from '../misc/store';
+  import { sortClips } from 'src/helpers';
 
   let form: IForm = {
     from_date: '26/05/2016',
@@ -51,7 +52,7 @@
 
     getClips(url).then(([data, pagination]) => {
       loading.set(false);
-      clips.set(get(clips).concat(data));
+      clips.update((x) => sortClips(x.concat(data)));
       if (pagination) {
         params.set({ ...get(params), after: pagination });
       }
