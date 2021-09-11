@@ -1,11 +1,15 @@
 <script lang="ts">
   import { SORT } from '../../misc/enums';
+  import { clips } from '../../misc/store';
   import Header from './Filters/Header.svelte';
+
+  let count: string;
+  $: count = `Clips (${$clips.length})`;
 </script>
 
 <header>
   <div class="header" style="width: 178px;">
-    <span>Clips (1002)</span>
+    <span class="clips">{count}</span>
   </div>
   <Header width="302px" title={SORT.TITLE} />
   <Header width="146px" title={SORT.AUTHOR} />

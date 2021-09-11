@@ -3,8 +3,15 @@
 
   let hover: boolean = false;
   let loaded: boolean = false;
+  let previousClip: IClip;
+
   const handleHover = () => (hover = !hover);
-  const handleLoad = () => (loaded = true);
+
+  $: {
+    if (clip.thumbnail !== previousClip?.thumbnail) loaded = false;
+    previousClip = clip;
+  }
+
   export let clip: IClip;
 </script>
 
@@ -27,7 +34,7 @@
       </a>
     </div>
   </div>
-  <img class:loaded alt="" src={clip.thumbnail} on:load={handleLoad} />
+  <img class:loaded alt="" src={clip.thumbnail} on:load={() => (loaded = true)} />
 </div>
 
 <style lang="scss">

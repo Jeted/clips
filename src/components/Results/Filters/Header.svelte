@@ -18,14 +18,7 @@
   <span>{title}</span>
   <div class="buttons">
     <div class="sorting" on:click={() => handleSorting(title)}>
-      <svg
-        class="arrow"
-        class:rotate
-        class:active
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
+      <svg class="arrow" class:rotate class:active viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
     </div>
