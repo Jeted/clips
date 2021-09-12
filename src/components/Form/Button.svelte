@@ -4,14 +4,12 @@
 
 <div class="button">
   <button disabled={$loading}>{$loading ? '' : 'Search'}</button>
-  {#if $loading}
-    <svg class="loading">
-      <path
-        d="M10.5,0C4.7,0,0,4.7,0,10.5h2.9c0-4.2,3.4-7.6,7.6-7.6s7.6,3.4,7.6,7.6s-3.4,7.6-7.6,7.6V21
-		C16.3,21,21,16.3,21,10.5S16.3,0,10.5,0L10.5,0z"
-      />
-    </svg>
-  {/if}
+  <svg class="spinner" class:loading={$loading}>
+    <path
+      d="M10.5,0C4.7,0,0,4.7,0,10.5h2.9c0-4.2,3.4-7.6,7.6-7.6s7.6,3.4,7.6,7.6s-3.4,7.6-7.6,7.6V21C16.3,21,21,16.3,21,10.5S16.3,0,10.5,0L10.5,0z"
+    />
+    <animateTransform attributeName="transform" dur="1.5s" type="rotate" from="0" to="360" repeatCount="indefinite" />
+  </svg>
 </div>
 
 <style lang="scss">
@@ -22,23 +20,24 @@
     justify-content: center;
     position: relative;
 
-    .loading {
-      animation-name: spin;
-      animation-duration: 1500ms;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-      cursor: pointer;
-      fill: white;
-      height: 21px;
-      padding: 7px;
-      position: absolute;
-      width: 21px;
-    }
-
     button {
       cursor: pointer;
       height: 35px;
       width: 90px;
+    }
+
+    .spinner {
+      display: none;
+      fill: $icon-color;
+      height: 21px;
+      padding: 7px;
+      pointer-events: none;
+      position: absolute;
+      width: 21px;
+    }
+
+    .loading {
+      display: block;
     }
   }
 
