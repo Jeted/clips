@@ -1,24 +1,19 @@
 <script lang="ts">
-  import { cache, handleCache } from '../../misc/store';
   import { IClip } from '../../misc/interfaces';
 
-  export let clip: IClip;
-
-  let cached: boolean = $cache.thumbnails.includes(clip.thumbnail);
   let hover: boolean = false;
   let loaded: boolean = false;
   let previousClip: IClip;
 
   const handleHover = () => (hover = !hover);
-  const handleLoad = () => {
-    handleCache('thumbnails', clip.thumbnail);
-    loaded = true;
-  };
+  const handleLoad = () => (loaded = true);
 
   $: {
     if (clip !== previousClip) loaded = false;
     previousClip = clip;
   }
+
+  export let clip: IClip;
 </script>
 
 <div class="thumbnail">
@@ -40,7 +35,7 @@
       </a>
     </div>
   </div>
-  <img class:cached class:loaded={!cached && loaded} alt="" src={clip.thumbnail} on:load={handleLoad} />
+  <img class:loaded alt="" src={clip.thumbnail} on:load={handleLoad} />
 </div>
 
 <style lang="scss">
@@ -62,10 +57,6 @@
 
     .loaded {
       transition: opacity 300ms ease;
-    }
-
-    .loaded,
-    .cached {
       opacity: 100;
     }
 

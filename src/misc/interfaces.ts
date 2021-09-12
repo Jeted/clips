@@ -1,9 +1,5 @@
 import { Writable } from 'svelte/store';
 
-export interface ICache {
-  thumbnails: string[];
-}
-
 export interface ICategory {
   categoryId: string;
   categoryName: string;
@@ -51,7 +47,6 @@ export interface ISorting {
 }
 
 export interface IStore {
-  cache: ICache;
   clips: IClip[];
   loading: boolean;
   sorting: ISorting;
