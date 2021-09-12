@@ -6,8 +6,6 @@
   export let itemHeight = undefined;
   export let maxHeight = itemHeight * items.length;
 
-  let foo;
-
   // read-only, but visible to consumers via bind:start
   export let start = 0;
   export let end = 0;
@@ -140,13 +138,13 @@
   on:scroll={handle_scroll}
   style="max-height: {maxHeight}px"
 >
-  <div class="content" bind:this={contents} style="padding-top: {top}px; padding-bottom: {bottom}px;">
+  <ul class="content" bind:this={contents} style="padding-top: {top}px; padding-bottom: {bottom}px;">
     {#each visible as row (row.index)}
-      <div class="row">
+      <li class="row">
         <slot clip={row.data}>Missing template</slot>
-      </div>
+      </li>
     {/each}
-  </div>
+  </ul>
 </div>
 
 <style>
