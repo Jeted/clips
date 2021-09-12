@@ -25,7 +25,7 @@
   .clips {
     background: $secondary-color;
     border-radius: 8px 8px 11px 11px;
-    color: white;
+    color: $text-color;
     font-size: 14px;
     padding: 0 8px 8px 8px;
   }
@@ -41,7 +41,7 @@
     font-size: 13px;
 
     &:hover {
-      background-color: #24262f;
+      background-color: $row-highlight;
       border-radius: 4px;
     }
   }

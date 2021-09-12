@@ -15,6 +15,8 @@
 </div>
 
 <style lang="scss">
+  @import '../../styles/colors.scss';
+
   .button {
     display: flex;
     justify-content: center;

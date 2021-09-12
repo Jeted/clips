@@ -103,8 +103,7 @@
           cursor: not-allowed;
         }
         &:focus {
-          background: #1c1d25;
-          box-shadow: 0 0 0 3px #ffffff12;
+          box-shadow: 0 0 0 3px $transparent-white;
           outline: none !important;
         }
       }

@@ -26,6 +26,8 @@
 </div>
 
 <style lang="scss">
+  @import '../../../styles/colors.scss';
+
   .header {
     display: inline-flex;
 
@@ -45,7 +47,7 @@
       margin: 4px;
       height: 28px;
       &:hover {
-        background-color: #ffffff1c;
+        background-color: $transparent-white;
       }
 
       .arrow {

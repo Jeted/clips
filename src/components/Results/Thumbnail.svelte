@@ -38,6 +38,7 @@
 </div>
 
 <style lang="scss">
+  @import '../../styles/colors.scss';
   .thumbnail {
     height: 100px;
     margin: auto 0 auto 8px;
@@ -63,7 +64,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.65);
+      background-color: $transparent-black;
       border-radius: 4px;
       display: flex;
       justify-content: center;
@@ -78,13 +79,13 @@
           border-radius: 50%;
           cursor: pointer;
           height: 32px;
-          fill: #fff;
+          fill: $icon-color;
           margin: 4px;
           padding: 6px;
           transition: background-color 50ms ease;
           width: 32px;
           &:hover {
-            background-color: #ffffff1a;
+            background-color: $transparent-white;
           }
 
           svg {

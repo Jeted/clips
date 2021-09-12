@@ -59,7 +59,7 @@
       margin-left: 16px;
       padding: 6px 17px;
       &:hover {
-        background-color: $highlighted;
+        background-color: $btn-highlight;
       }
     }
 
