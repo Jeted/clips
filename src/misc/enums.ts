@@ -1,4 +1,5 @@
-export enum SORT {
+export enum COLUMN {
+  NONE = '',
   TITLE = 'Title',
   AUTHOR = 'Author',
   CATEGORY = 'Category',

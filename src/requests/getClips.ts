@@ -16,10 +16,10 @@ export async function getClips(url: URL): Promise<[IClip[], string]> {
 
     const data: IClip[] = result.data.data.map((clip: IClipData) => {
       return {
-        displayName: clip.creator_name || '-',
+        author: clip.creator_name || '-',
         title: clip.title.trim(),
-        views: clip.view_count,
-        createdAt: new Date(clip.created_at).getTime(),
+        views: clip.view_count.toString(),
+        date: new Date(clip.created_at).getTime(),
         thumbnail: clip.thumbnail_url,
         download: clip.thumbnail_url.replace('-preview-480x272.jpg', '.mp4'),
         url: clip.url,

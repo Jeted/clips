@@ -16,10 +16,10 @@ export interface IClipData {
 }
 
 export interface IClip {
-  displayName: string;
+  author: string;
   title: string;
   views: number;
-  createdAt: number;
+  date: number;
   thumbnail: string;
   download: string;
   url: string;
@@ -42,7 +42,7 @@ export interface IParams {
 }
 
 export interface ISorting {
-  field: string;
+  column: string;
   order: boolean;
 }
 

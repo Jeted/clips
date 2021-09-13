@@ -1,23 +1,23 @@
 <script lang="ts">
-  import { SORT } from '../../../misc/enums';
   import { sorting, handleSorting } from '../../../misc/store';
+  import { COLUMN } from '../../../misc/enums';
 
   let hover: boolean, rotate: boolean, active: boolean;
   hover = rotate = active = false;
 
-  $: active = $sorting.field === title || hover;
+  $: active = $sorting.column === column || hover;
   $: rotate = $sorting.order;
 
   const handleHover = () => (hover = !hover);
 
-  export let title: SORT;
+  export let column: COLUMN;
   export let width: string;
 </script>
 
 <div class="header" style="width: {width};" on:mouseenter={handleHover} on:mouseleave={handleHover}>
-  <span>{title}</span>
+  <span>{column}</span>
   <div class="buttons">
-    <div class="sorting" on:click={() => handleSorting(title)}>
+    <div class="sorting" on:click={() => handleSorting(column)}>
       <svg class="arrow" class:rotate class:active viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
       </svg>
