@@ -1,9 +1,9 @@
 import config from '../config';
 import { get } from 'svelte/store';
-import { IToken } from '../misc/interfaces';
+import { Token } from '../misc/types';
 import { useLocalStorage } from './useLocalStorage';
 
-export function useToken(): IToken {
+export function useToken(): Token {
   const LOGIN_URL = `https://id.twitch.tv/oauth2/authorize?client_id=${config.CLIENT_ID}&redirect_uri=${config.BASE_URL}&response_type=token`;
 
   const OAUTH = useLocalStorage('tcf:oauth');

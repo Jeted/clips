@@ -1,11 +1,11 @@
 import { get } from 'svelte/store';
+import { Clip } from '../misc/types';
 import { COLUMN } from '../misc/enums';
 import { sorting } from '../misc/store';
-import { IClip } from '../misc/interfaces';
 
-export function sortClips(clips: IClip[]) {
+export function sortClips(clips: Clip[]) {
   const { column, order } = get(sorting);
-  return clips.sort((a: IClip, b: any) => {
+  return clips.sort((a: Clip, b: any) => {
     switch (column) {
       case COLUMN.TITLE:
         if (order) return a.title?.localeCompare(b.title);

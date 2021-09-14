@@ -1,9 +1,9 @@
 import { sortClips } from '../helpers';
 import { ORDER, COLUMN } from './enums';
 import { get, writable, Writable } from 'svelte/store';
-import { IClip, IParams, ISorting, IStore } from './interfaces';
+import { Clip, Filtering, Params, Sorting, Store } from './types';
 
-const Store: IStore = {
+const store: Store = {
   clips: [],
   loading: false,
   sorting: {
@@ -13,10 +13,10 @@ const Store: IStore = {
   params: null,
 };
 
-const clips: Writable<IClip[]> = writable(Store.clips);
-const loading: Writable<boolean> = writable(Store.loading);
-const params: Writable<IParams> = writable(Store.params);
-const sorting: Writable<ISorting> = writable(Store.sorting);
+const clips: Writable<Clip[]> = writable(store.clips);
+const loading: Writable<boolean> = writable(store.loading);
+const params: Writable<Params> = writable(store.params);
+const sorting: Writable<Sorting> = writable(store.sorting);
 
 const handleSorting = (column: COLUMN) => {
   const values = get(sorting);

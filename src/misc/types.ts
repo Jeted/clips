@@ -1,11 +1,11 @@
 import { Writable } from 'svelte/store';
 
-export interface ICategory {
+export type Category = {
   categoryId: string;
   categoryName: string;
-}
+};
 
-export interface IClipData {
+export type ClipData = {
   creator_name: string;
   game_id: string;
   title: string;
@@ -13,9 +13,9 @@ export interface IClipData {
   created_at: string;
   thumbnail_url: string;
   url: string;
-}
+};
 
-export interface IClip {
+export type Clip = {
   author: string;
   title: string;
   views: number;
@@ -25,48 +25,47 @@ export interface IClip {
   url: string;
   categoryId?: string;
   category?: string;
-}
-
-export interface IForm {
+};
+export type Form = {
   from_date: string;
   to_date: string;
   channel: string;
-}
+};
 
-export interface IParams {
+export type Params = {
   broadcaster_id: string;
   first: number;
   started_at: string;
   ended_at: string;
   after?: string;
-}
+};
 
-export interface ISorting {
+export type Sorting = {
   column: string;
   order: boolean;
-}
+};
 
-export interface IStore {
-  clips: IClip[];
+export type Store = {
+  clips: Clip[];
   loading: boolean;
-  sorting: ISorting;
-  params: IParams;
-}
+  sorting: Sorting;
+  params: Params;
+};
 
-export interface IToken {
+export type Token = {
   LOGIN_URL: string;
   USERNAME: Writable<string>;
   OAUTH: Writable<string>;
-}
+};
 
-export interface IUser {
+export type User = {
   userId: string;
   login: string;
   displayName: string;
   avatar: string;
-}
+};
 
-export interface IValidate {
+export type Validate = {
   clientId: string;
   userId: string;
-}
+};

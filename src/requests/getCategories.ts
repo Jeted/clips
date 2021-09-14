@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { ICategory, IClip } from '../misc/interfaces';
+import { Category, Clip } from '../misc/types';
 
-export async function getCategories(clips: IClip[]): Promise<ICategory[] | null> {
+export async function getCategories(clips: Clip[]): Promise<Category[] | null> {
   if (!clips.length) return null;
 
   const client_id = localStorage.getItem('tcf:client_id');

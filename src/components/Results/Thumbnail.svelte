@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { IClip } from '../../misc/interfaces';
+  import { Clip } from '../../misc/types';
 
   let hover: boolean = false;
   let loaded: boolean = false;
-  let previousClip: IClip;
+  let previousClip: Clip;
 
   const handleHover = () => (hover = !hover);
   const handleLoad = () => (loaded = true);
@@ -13,7 +13,7 @@
     previousClip = clip;
   }
 
-  export let clip: IClip;
+  export let clip: Clip;
 </script>
 
 <div class="thumbnail">

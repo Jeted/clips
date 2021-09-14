@@ -3,12 +3,12 @@
   import Input from './Form/Input.svelte';
   import Button from './Form/Button.svelte';
   import { get } from 'svelte/store';
+  import { Form } from '../misc/types';
   import { sortClips } from 'src/helpers';
-  import { IForm } from '../misc/interfaces';
   import { getClips, getUser } from '../requests';
   import { loading, params, clips } from '../misc/store';
 
-  let form: IForm = {
+  let form: Form = {
     from_date: '26/05/2016',
     to_date: moment(new Date()).format('DD/MM/YYYY'),
     channel: '',

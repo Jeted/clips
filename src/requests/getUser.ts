@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { IUser } from '../misc/interfaces';
+import { User } from '../misc/types';
 
-export async function getUser(channel: string, isLogin: boolean): Promise<IUser> {
+export async function getUser(channel: string, isLogin: boolean): Promise<User> {
   const client_id = localStorage.getItem('tcf:client_id');
   const oauth = localStorage.getItem('tcf:oauth');
 

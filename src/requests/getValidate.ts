@@ -1,7 +1,7 @@
 import axios from 'axios';
-import { IValidate } from '../misc/interfaces';
+import { Validate } from '../misc/types';
 
-export async function getValidate(): Promise<IValidate> {
+export async function getValidate(): Promise<Validate> {
   const oauth = localStorage.getItem('tcf:oauth');
   return axios('https://id.twitch.tv/oauth2/validate', {
     headers: {

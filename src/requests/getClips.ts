@@ -1,8 +1,8 @@
 import axios from 'axios';
+import { Clip, ClipData } from '../misc/types';
 import { getCategories } from './getCategories';
-import { IClip, IClipData } from '../misc/interfaces';
 
-export async function getClips(url: URL): Promise<[IClip[], string]> {
+export async function getClips(url: URL): Promise<[Clip[], string]> {
   const client_id = localStorage.getItem('tcf:client_id');
   const oauth = localStorage.getItem('tcf:oauth');
 
@@ -14,7 +14,7 @@ export async function getClips(url: URL): Promise<[IClip[], string]> {
   }).then(async (result) => {
     const pagination = result.data.pagination.cursor;
 
-    const data: IClip[] = result.data.data.map((clip: IClipData) => {
+    const data: Clip[] = result.data.data.map((clip: ClipData) => {
       return {
         author: clip.creator_name || '-',
         title: clip.title.trim(),
@@ -29,7 +29,7 @@ export async function getClips(url: URL): Promise<[IClip[], string]> {
 
     const categories = await getCategories(data);
 
-    const clips = data.map((clip: IClip) => {
+    const clips = data.map((clip: Clip) => {
       if (categories) {
         const [category] = categories.filter((x) => x.categoryId === clip.categoryId);
         return {
