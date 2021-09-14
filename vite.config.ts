@@ -1,66 +1,26 @@
-/**
- * Babel will compile modern JavaScript down to a format compatible with older browsers, but it will also increase your
- * final bundle size and build speed. Edit the `browserslist` property in the package.json file to define which
- * browsers Babel should target.
- *
- * Browserslist documentation: https://github.com/browserslist/browserslist#browserslist-
- */
-const useBabel = true;
-
-/**
- * Change this to `true` to generate source maps alongside your production bundle. This is useful for debugging, but
- * will increase total bundle size and expose your source code.
- */
-const sourceMapsInProduction = false;
-
-/*********************************************************************************************************************/
-/**********                                              Vite                                               **********/
-/*********************************************************************************************************************/
+/***********************************************************************************/
+/**********                             Vite                              **********/
+/***********************************************************************************/
 
 import { defineConfig, UserConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import path from 'path';
 import sveltePreprocess from 'svelte-preprocess';
-import legacy from '@vitejs/plugin-legacy';
-import autoprefixer from 'autoprefixer';
-import pkg from './package.json';
 import tsconfig from './tsconfig.json';
 import _config from './src/config';
 
-const production = process.env.NODE_ENV === 'production';
 const config = <UserConfig>defineConfig({
   plugins: [
     svelte({
-      emitCss: production,
       preprocess: sveltePreprocess(),
-      compilerOptions: {
-        dev: !production,
-      },
-      hot: !production,
     }),
   ],
   server: {
     host: 'localhost',
     port: 5000,
   },
-  base: '/' + _config.REPO + '/',
-  build: {
-    sourcemap: sourceMapsInProduction,
-  },
-  css: {
-    postcss: {
-      plugins: [autoprefixer()],
-    },
-  },
+  base: `/${_config.REPO}/`,
 });
-// Babel
-if (useBabel) {
-  config.plugins.unshift(
-    legacy({
-      targets: pkg.browserslist,
-    }),
-  );
-}
 
 // Load path aliases from the tsconfig.json file
 const aliases = tsconfig.compilerOptions.paths;

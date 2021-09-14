@@ -9,18 +9,18 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "serve": "yarn build && yarn preview"
+    "serve": "yarn build && yarn preview",
+    "update": "npx npm-check-updates -u"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.15",
-    "@vitejs/plugin-legacy": "^1.5.1",
-    "autoprefixer": "^10.3.1",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.23",
+    "@vitejs/plugin-legacy": "^1.5.3",
     "gh-pages": "^3.2.3",
-    "sass": "^1.37.5",
-    "svelte": "^3.42.1",
-    "svelte-preprocess": "^4.7.4",
-    "typescript": "^4.3.5",
-    "vite": "^2.4.4"
+    "sass": "^1.40.0",
+    "svelte": "^3.42.5",
+    "svelte-preprocess": "^4.9.4",
+    "typescript": "^4.4.3",
+    "vite": "^2.5.7"
   },
   "browserslist": [
     "defaults"
