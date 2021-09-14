@@ -10,7 +10,7 @@
 <input type="text" spellcheck="false" autocomplete="false" {placeholder} disabled={!$OAUTH} bind:value />
 
 <style lang="scss">
-  input[type='text'] {
+  input {
     margin-right: 8px;
     cursor: text;
   }

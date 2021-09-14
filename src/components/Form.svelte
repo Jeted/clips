@@ -44,14 +44,14 @@
 
     const url = new URL('https://api.twitch.tv/helix/clips');
     Object.entries(get(params)).forEach(([param, value]) => {
-      url.searchParams.set(param, value);
+      url.searchParams.set(param, value.toString());
     });
 
     getClips(url).then(([data, pagination]) => {
       loading.set(false);
-      clips.update((x) => sortClips(x.concat(data)));
+      clips.update((values) => sortClips(values.concat(data)));
       if (pagination) {
-        params.set({ ...get(params), after: pagination });
+        params.update((values) => ({ ...values, after: pagination }));
       }
     });
   });
