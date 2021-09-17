@@ -8,9 +8,13 @@
   import { getClips, getUser } from '../requests';
   import { loading, params, clips } from '../misc/store';
 
+  enum DATE {
+    FORMAT = 'DD/MM/YYYY',
+  }
+
   let form: Form = {
     from_date: '26/05/2016',
-    to_date: moment(new Date()).format('DD/MM/YYYY'),
+    to_date: moment(new Date()).format(DATE.FORMAT),
     channel: '',
   };
 
@@ -31,8 +35,8 @@
         params.set({
           broadcaster_id: user.userId,
           first: 100,
-          started_at: moment(form.from_date, 'DD/MM/YYYY').toISOString(),
-          ended_at: moment(form.to_date, 'DD/MM/YYYY').toISOString(),
+          started_at: moment(form.from_date, DATE.FORMAT).toISOString(),
+          ended_at: moment(form.to_date, DATE.FORMAT).add(1, 'day').toISOString(),
         });
       })
       .catch(() => loading.set(false));
